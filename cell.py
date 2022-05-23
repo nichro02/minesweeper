@@ -10,4 +10,18 @@ class Cell:
             location,
             text='Text'
         )
+        #assign left-click event to button
+        btn.bind('<Button-1>', self.left_click_actions)
         self.cell_btn_object = btn
+
+        #assign right-clickevent to button
+        btn.bind('<Button-2>', self.right_click_actions)
+        self.cell_btn_object = btn
+
+    def left_click_actions(self, event):
+        print(event)
+        print('Left click!')
+    
+    def right_click_actions(self, event):
+        print(event)
+        print('Right click!')
