@@ -58,13 +58,13 @@ center_frame.place(
 #     row=1
 # )
 
-for x in range(5):
-    for y in range(5):
+for x in range(settings.GRID_SIZE):
+    for y in range(settings.GRID_SIZE):
         c = Cell()
         c.create_btn_obj(center_frame)
         c.cell_btn_object.grid(
-            column = y,
-            row = x
+            column = x,
+            row = y
         )
 
 #run the window
