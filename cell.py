@@ -1,14 +1,18 @@
 #This file is used to create the cells of the game
 from tkinter import Button
 class Cell:
-    def __init__(self, is_mine=False):
+    def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
         self.cell_btn_object = None
+        self.x = x
+        self.y = y
 
     def create_btn_obj(self, location):
         btn = Button(
             location,
-            text='Text'
+            width=12,
+            height=4,
+            text=f"{self.x}, {self.y}"
         )
         #assign left-click event to button
         btn.bind('<Button-1>', self.left_click_actions)

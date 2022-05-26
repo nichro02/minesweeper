@@ -44,23 +44,10 @@ center_frame.place(
 )
 
 #instantiate game cells
-# c1 = Cell()
-# c1.create_btn_obj(center_frame)
-# c1.cell_btn_object.grid(
-#     column=0,
-#     row=0
-# )
-
-# c2 = Cell()
-# c2.create_btn_obj(center_frame)
-# c2.cell_btn_object.grid(
-#     column=0,
-#     row=1
-# )
 
 for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
-        c = Cell()
+        c = Cell(x, y)
         c.create_btn_obj(center_frame)
         c.cell_btn_object.grid(
             column = x,
