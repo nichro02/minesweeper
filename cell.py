@@ -1,5 +1,7 @@
 #This file is used to create the cells of the game
 from tkinter import Button
+import random
+
 class Cell:
     #create list to contain game cells
     all = []
@@ -35,7 +37,17 @@ class Cell:
         print(event)
         print('Right click!')
 
-    #static method
+    #static methods
     @staticmethod
     def randomize_mines():
-        pass
+        # my_list = ['Jim', 'Mike', 'Paul']
+        # names = random.sample(my_list, 2)
+        # print(names)
+        picked_cells = random.sample(
+            Cell.all,
+            9
+        )
+        print(picked_cells)
+
+    def __repr__(self):
+        return f"Cell({self.x}, {self.y})"
