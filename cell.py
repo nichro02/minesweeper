@@ -1,6 +1,7 @@
 #This file is used to create the cells of the game
 from tkinter import Button
 import random
+import settings
 
 class Cell:
     #create list to contain game cells
@@ -19,7 +20,7 @@ class Cell:
             location,
             width=12,
             height=4,
-            text=f"{self.x}, {self.y}"
+            
         )
         #assign left-click event to button
         btn.bind('<Button-1>', self.left_click_actions)
@@ -40,14 +41,14 @@ class Cell:
     #static methods
     @staticmethod
     def randomize_mines():
-        # my_list = ['Jim', 'Mike', 'Paul']
-        # names = random.sample(my_list, 2)
-        # print(names)
         picked_cells = random.sample(
             Cell.all,
-            9
+            settings.MINES_COUNT
         )
-        print(picked_cells)
+        
+        #iterate over list
+        for picked_cell in picked_cells:
+            picked_cell.is_mine = True
 
     def __repr__(self):
         return f"Cell({self.x}, {self.y})"
