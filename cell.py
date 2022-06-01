@@ -19,7 +19,7 @@ class Cell:
         btn = Button(
             location,
             width=12,
-            height=4,
+            height=4
             
         )
         #assign left-click event to button
@@ -31,8 +31,20 @@ class Cell:
         self.cell_btn_object = btn
 
     def left_click_actions(self, event):
-        print(event)
-        print('Left click!')
+        #print(event)
+        if self.is_mine:
+            self.show_mine()
+        else:
+            self.show_cell()
+
+    def show_cell(self):
+        self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
+    
+    def show_mine(self):
+        #write logic to end game and display message
+        self.cell_btn_object.configure(bg='red')
+        self.cell_btn_object.text='MINE'
+        print('MINE!')
     
     def right_click_actions(self, event):
         print(event)

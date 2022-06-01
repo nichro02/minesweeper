@@ -54,9 +54,6 @@ for x in range(settings.GRID_SIZE):
             row = y
         )
 
-# print(len(Cell.all))
-# print(Cell.all)
-
 Cell.randomize_mines()
 #verify cells became mines
 for c in Cell.all:
