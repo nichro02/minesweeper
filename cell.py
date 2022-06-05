@@ -37,8 +37,27 @@ class Cell:
         else:
             self.show_cell()
 
+    #method to get nearby mines when a cell is clicked
+    def get_cell_by_axis(self, x, y):
+        #return cell object based on a and y values
+        for cell in Cell.all:
+            if cell.x == x and cell.y == y:
+                return cell
+
     def show_cell(self):
         self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
+
+        surrounded_cells = [
+            self.get_cell_by_axis(self.x - 1, self.y - 1),
+            self.get_cell_by_axis(self.x - 1, self.y),
+            self.get_cell_by_axis(self.x - 1, self.y + 1),
+            self.get_cell_by_axis(self.x, self.y - 1),
+            self.get_cell_by_axis(self.x + 1, self.y - 1),
+            self.get_cell_by_axis(self.x + 1, self.y),
+            self.get_cell_by_axis(self.x + 1, self.y + 1),
+            self.get_cell_by_axis(self.x, self.y + 1)
+        ]
+        print(surrounded_cells)
     
     def show_mine(self):
         #write logic to end game and display message
