@@ -44,11 +44,11 @@ class Cell:
             if cell.x == x and cell.y == y:
                 return cell
 
-    def show_cell(self):
-        self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
-
+    #convert list of surrounding cells to read-only
+    @property
+    def surrounded_cells(self):
         #cells surrounding clicked cell
-        surrounded_cells = [
+        cells = [
             self.get_cell_by_axis(self.x - 1, self.y - 1),
             self.get_cell_by_axis(self.x - 1, self.y),
             self.get_cell_by_axis(self.x - 1, self.y + 1),
@@ -59,9 +59,16 @@ class Cell:
             self.get_cell_by_axis(self.x, self.y + 1)
         ]
         #filter out None cells
-        surrounded_cells = [cell for cell in surrounded_cells if cell is not None]
+        cells = [cell for cell in cells if cell is not None]
 
-        print(surrounded_cells)
+        print(cells)
+
+    def show_cell(self):
+        self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
+
+        print(self.surrounded_cells)
+
+        
     
     def show_mine(self):
         #write logic to end game and display message
