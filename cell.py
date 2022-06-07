@@ -62,6 +62,7 @@ class Cell:
         cells = [cell for cell in cells if cell is not None]
 
         print(cells)
+        return cells
 
     def show_cell(self):
         self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
