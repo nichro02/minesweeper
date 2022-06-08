@@ -64,10 +64,23 @@ class Cell:
         print(cells)
         return cells
 
+    @property
+    def surrounded_cells_mines_length(self):
+       counter = 0
+
+       for cell in self.surrounded_cells:
+           if cell.is_mine:
+                counter += 1
+
+       return counter
+       
+
     def show_cell(self):
         self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
 
-        print(self.surrounded_cells)
+        print('SURROUNDING CELLS',self.surrounded_cells)
+
+        print('# NEARBY MINES',self.surrounded_cells_mines_length)
 
         
     
