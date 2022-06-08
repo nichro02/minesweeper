@@ -64,6 +64,7 @@ class Cell:
         print(cells)
         return cells
 
+    #count number of mines nearby to click cell
     @property
     def surrounded_cells_mines_length(self):
        counter = 0
@@ -76,7 +77,7 @@ class Cell:
        
 
     def show_cell(self):
-        self.cell_btn_object.configure(text=f"{self.x}, {self.y}")
+        self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
 
         print('SURROUNDING CELLS',self.surrounded_cells)
 
