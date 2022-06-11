@@ -1,9 +1,10 @@
 #This file is used to create the cells of the game
-from tkinter import Button
+from tkinter import Button, Label
 import random
 import settings
 
 class Cell:
+    cell_count_label_object = None
     #create list to contain game cells
     all = []
     def __init__(self, x, y, is_mine=False):
@@ -28,6 +29,16 @@ class Cell:
         #assign right-clickevent to button
         btn.bind('<Button-2>', self.right_click_actions)
         self.cell_btn_object = btn
+
+    #create label to display number of cells left in game (not instance method because it's just used to count)
+    @staticmethod
+    def create_cell_count_label( location):
+        lbl = Label(
+            location,
+            text=f"Cells Left: {settings.CELL_COUNT}"
+        )
+        Cell.cell_count_label_object = lbl
+        return lbl
 
     def left_click_actions(self, event):
         #print(event)

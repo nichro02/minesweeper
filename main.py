@@ -54,6 +54,13 @@ for x in range(settings.GRID_SIZE):
             row = y
         )
 
+#Call label to count cells from Cell class
+Cell.create_cell_count_label(left_frame)
+Cell.cell_count_label_object.place(
+    x=0,
+    y=0
+)
+
 Cell.randomize_mines()
 #verify cells became mines
 # for c in Cell.all:
