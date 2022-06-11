@@ -44,7 +44,6 @@ center_frame.place(
 )
 
 #instantiate game cells
-
 for x in range(settings.GRID_SIZE):
     for y in range(settings.GRID_SIZE):
         c = Cell(x, y)

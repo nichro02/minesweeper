@@ -4,6 +4,7 @@ import random
 import settings
 
 class Cell:
+    cell_count = settings.CELL_COUNT
     cell_count_label_object = None
     #create list to contain game cells
     all = []
@@ -35,7 +36,10 @@ class Cell:
     def create_cell_count_label( location):
         lbl = Label(
             location,
-            text=f"Cells Left: {settings.CELL_COUNT}"
+            bg='black',
+            fg='white',
+            text=f"Cells Left: {Cell.cell_count}",
+            font=("Arial", 30)
         )
         Cell.cell_count_label_object = lbl
         return lbl
@@ -90,8 +94,12 @@ class Cell:
        return counter
        
     def show_cell(self):
+        Cell.cell_count -= 1
         self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
 
+        #Update cell count label
+        if Cell.cell_count_label_object:
+            Cell.cell_count_label_object.configure(text=f"Cells Left: {Cell.cell_count}")
         print('SURROUNDING CELLS',self.surrounded_cells)
 
         print('# NEARBY MINES',self.surrounded_cells_mines_length)   
