@@ -34,6 +34,10 @@ class Cell:
         if self.is_mine:
             self.show_mine()
         else:
+            #automatically show surrounding cells if clicked cell has zero nearby mines
+            if self.surrounded_cells_mines_length == 0:
+                for cell_obj in self.surrounded_cells:
+                    cell_obj.show_cell()
             self.show_cell()
 
     #method to get nearby mines when a cell is clicked
@@ -74,15 +78,12 @@ class Cell:
 
        return counter
        
-
     def show_cell(self):
         self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
 
         print('SURROUNDING CELLS',self.surrounded_cells)
 
-        print('# NEARBY MINES',self.surrounded_cells_mines_length)
-
-        
+        print('# NEARBY MINES',self.surrounded_cells_mines_length)   
     
     def show_mine(self):
         #write logic to end game and display message
