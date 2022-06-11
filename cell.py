@@ -10,6 +10,7 @@ class Cell:
     all = []
     def __init__(self, x, y, is_mine=False):
         self.is_mine = is_mine
+        self.is_opened = False
         self.cell_btn_object = None
         self.x = x
         self.y = y
@@ -94,12 +95,17 @@ class Cell:
        return counter
        
     def show_cell(self):
-        Cell.cell_count -= 1
-        self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
+        if not self.is_opened:
+            Cell.cell_count -= 1
+            
+            self.cell_btn_object.configure(text=self.surrounded_cells_mines_length)
 
-        #Update cell count label
-        if Cell.cell_count_label_object:
-            Cell.cell_count_label_object.configure(text=f"Cells Left: {Cell.cell_count}")
+            #Update cell count label
+            if Cell.cell_count_label_object:
+                Cell.cell_count_label_object.configure(text=f"Cells Left: {Cell.cell_count}")  
+
+        #Mark cell as opened
+        self.is_opened = True
         print('SURROUNDING CELLS',self.surrounded_cells)
 
         print('# NEARBY MINES',self.surrounded_cells_mines_length)   
