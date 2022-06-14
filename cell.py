@@ -118,13 +118,18 @@ class Cell:
         print('MINE!')
     
     def right_click_actions(self, event):
-        if not self.is_mine_candidate:
+        if not self.is_mine_candidate and not self.is_opened:
             self.cell_btn_object.configure(
-                bg='orange'
+                bg='orange',
+                text='danger'
             )
             self.is_mine_candidate = True
-        print(event)
-        print('Right click!')
+        elif self.is_mine_candidate == True and self.is_opened == False:
+            self.cell_btn_object.configure(
+                bg='SystemButtonFace',
+                text=''
+            )
+            self.is_mine_candidate = False
 
     #static methods
     @staticmethod
