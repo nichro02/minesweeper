@@ -1,5 +1,5 @@
 #This file is used to create the cells of the game
-from tkinter import Button, Label
+from tkinter import Button, Label,messagebox
 import random
 import settings
 
@@ -114,8 +114,8 @@ class Cell:
     def show_mine(self):
         #write logic to end game and display message
         self.cell_btn_object.configure(bg='red', text='MINE!')
-        # self.cell_btn_object.configure(text='MINE')
-        print('MINE!')
+        # use ctypes library to display message that game is over
+        messagebox.showinfo('Game Over', 'You clicked on a mine')
     
     def right_click_actions(self, event):
         if not self.is_mine_candidate and not self.is_opened:
