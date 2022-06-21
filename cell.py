@@ -2,6 +2,7 @@
 from tkinter import Button, Label,messagebox
 import random
 import settings
+import sys
 
 class Cell:
     cell_count = settings.CELL_COUNT
@@ -116,6 +117,7 @@ class Cell:
         self.cell_btn_object.configure(bg='red', text='MINE!')
         # use ctypes library to display message that game is over
         messagebox.showinfo('Game Over', 'You clicked on a mine')
+        sys.exit()
     
     def right_click_actions(self, event):
         if not self.is_mine_candidate and not self.is_opened:
