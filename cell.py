@@ -105,7 +105,10 @@ class Cell:
             #Update cell count label
             if Cell.cell_count_label_object:
                 Cell.cell_count_label_object.configure(text=f"Cells Left: {Cell.cell_count}")  
-
+        #Handle opening a cell that was marked as potential mine
+        self.cell_btn_object.configure(
+            bg='SystemButtonFace'
+        )
         #Mark cell as opened
         self.is_opened = True
         print('SURROUNDING CELLS',self.surrounded_cells)
